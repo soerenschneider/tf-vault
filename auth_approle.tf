@@ -19,8 +19,7 @@ resource "vault_identity_group" "approle" {
 }
 
 locals {
-  hosts      = yamldecode(file(var.hosts_definition_file))
-  hosts_approles_defined = flatten([for hosts_key, hosts_value in local.hosts : [
+  hosts_approles_defined = flatten([for hosts_key, hosts_value in try(yamldecode(file(var.hosts_definition_file)), {}) : [
     for location_key, location_values in hosts_value : [
       for host in location_values : host if lookup(host, "vault", null) != null
     ]
