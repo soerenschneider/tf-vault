@@ -25,13 +25,13 @@ locals {
     ]
     ] if hosts_key == "local_hosts"
   ])
-  vault_approles = flatten([for host in local.hosts_approles_defined : [
+  vault_approles = concat(var.approles, flatten([for host in local.hosts_approles_defined : [
     for vault in host.vault : merge(
       vault, {
         "token_bound_cidrs"     = coalescelist(lookup(vault, "token_bound_cidrs", []), tolist([format("%s/24", host.logical)])) # https://github.com/hashicorp/vault/issues/11961
         "secret_id_bound_cidrs" = coalescelist(lookup(vault, "secret_id_bound_cidrs", []), tolist([format("%s/32", host.logical)]))
       }
     )]
-  ])
+  ]))
 
 }
