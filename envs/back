@@ -1,0 +1,43 @@
+ssh_allowed_domains = ["soerenschneider.net"]
+
+vault_server_url      = "https://vault.dd.soerenschneider.net:8200"
+pki_cert_domain       = "soerenschneider.net"
+pki_root_common_name  = "soerenschneider - root CA"
+pki_root_organization = "soerenschneider"
+pki_im_common_name    = "soerenschneider - Intermediate CA"
+pki_im_organization   = "soerenschneider"
+pki_im_ou             = "Steering Wheel"
+
+pki_allowed_token_domains = ["soeren-yubikey5.soerenschneider.net"]
+
+prometheus_token_cidrs     = ["192.168.2.0/24", "192.168.65.13/32", "192.168.73.0/24"]
+emergency_seal_token_cidrs = ["192.168.64.0/24"]
+
+route53_hosted_zone = "Z09025662ISFIZ6MH3O8I"
+aws_account_id      = "457894857334"
+hosts_definition_file = "/home/soeren/src/gitlab/playbooks/hosts.yml"
+
+approles = [
+  # Client machines #############################################################################
+  {
+    role_name             = "machine-desktop.dd.soerenschneider.net",
+    token_policies        = ["ssh_host_key_sign", "pki_boyscout", "pki_human"],
+    identity_metadata     = { "host" = "desktop.dd.soerenschneider.net" },
+    secret_id_bound_cidrs = ["192.168.64.0/24"],
+    token_bound_cidrs     = ["192.168.64.0/24"]
+  },
+  {
+    role_name             = "machine-yoga.soerenschneider.net",
+    token_policies        = ["ssh_host_key_sign", "pki_boyscout", "pki_human"],
+    identity_metadata     = { "host" = "yoga.soerenschneider.net" },
+    secret_id_bound_cidrs = ["192.168.2.0/24", "192.168.64.0/24", "192.168.72.0/24"],
+    token_bound_cidrs     = ["192.168.2.0/24", "192.168.64.0/24", "192.168.72.0/24"]
+  },
+  {
+    role_name             = "machine-outpost.pt.soerenschneider.net",
+    token_policies        = ["ssh_host_key_sign", "pki_boyscout", "pki_human"],
+    identity_metadata     = { "host" = "outpost.pt.soerenschneider.net" },
+    secret_id_bound_cidrs = ["192.168.72.0/24"],
+    token_bound_cidrs     = ["192.168.72.0/24"]
+  },
+]
