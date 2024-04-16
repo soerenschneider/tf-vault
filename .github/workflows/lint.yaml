@@ -1,0 +1,35 @@
+---
+name: "lint"
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  fmt:
+    name: fmt and validate
+    runs-on: ubuntu-latest
+    container: hashicorp/terraform:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: fmt
+        run: terraform fmt -recursive -check
+      - name: validate
+        run: |
+          terraform -chdir=envs/prod init -backend=false
+          terraform -chdir=envs/prod validate
+
+  tflint:
+    name: tflint
+    runs-on: ubuntu-latest
+    container: ghcr.io/soerenschneider/terraform-tools:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: tflint
+        run: tflint --recursive
