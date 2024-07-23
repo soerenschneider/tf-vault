@@ -7,8 +7,7 @@ locals {
 }
 
 variable "hosts_definition_file" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "aws" {

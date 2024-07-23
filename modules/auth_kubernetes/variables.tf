@@ -3,6 +3,11 @@ variable "mount_path" {
   default = "kubernetes"
 }
 
+variable "name" {
+  type    = string
+  default = ""
+}
+
 variable "host" {
   type = string
   validation {

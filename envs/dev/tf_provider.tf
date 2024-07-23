@@ -17,6 +17,12 @@ terraform {
       version = "2.4.1"
     }
   }
+
+  backend "s3" {
+    bucket = "soerenschneider-terraform"
+    key    = "vault-prd"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
@@ -32,6 +38,6 @@ provider "aws" {
 }
 
 provider "vault" {
-  address               = "https://vault.ha.soeren.cloud"
-  max_lease_ttl_seconds = 120
+  address = "http://localhost:8200"
+  token   = "test"
 }
