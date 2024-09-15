@@ -23,7 +23,7 @@ resource "vault_identity_group" "approle" {
 }
 
 locals {
-  hosts_definition_file = "~/src/github/ansible/inventory/prod/group_vars/all/hosts.yml"
+  hosts_definition_file = pathexpand("~/src/github/ansible-inventory-prod/group_vars/all/hosts.yml")
   #hosts_approles_defined = flatten([for hosts_key, hosts_value in try(yamldecode(file(var.hosts_definition_file)), {}) : [
   hosts_approles_defined = flatten([for hosts_key, hosts_value in yamldecode(file(local.hosts_definition_file)) : [
     for location_key, location_values in hosts_value : [
