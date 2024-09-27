@@ -25,11 +25,11 @@ resource "vault_identity_entity" "approle_identity" {
 }
 
 resource "vault_identity_entity_alias" "approle_identity_alias" {
-  depends_on     = [vault_identity_entity.approle_identity]
-  for_each       = { for role in var.approles : role.role_name => role if role.create_identity }
+  depends_on = [vault_identity_entity.approle_identity]
+  for_each   = { for role in var.approles : role.role_name => role if role.create_identity }
 
-  name           = each.value.role_name
-  canonical_id   = vault_identity_entity.approle_identity[each.value.role_name].id
-  mount_accessor = var.approle_mount_accessor
+  name            = each.value.role_name
+  canonical_id    = vault_identity_entity.approle_identity[each.value.role_name].id
+  mount_accessor  = var.approle_mount_accessor
   custom_metadata = each.value.identity_metadata
 }
