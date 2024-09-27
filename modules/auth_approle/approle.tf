@@ -20,13 +20,16 @@ resource "vault_approle_auth_backend_role" "approle" {
 resource "vault_identity_entity" "approle_identity" {
   for_each = { for role in var.approles : role.role_name => role if role.create_identity }
   name     = each.value.role_name
+  policies = each.value.token_policies
   metadata = each.value.identity_metadata
 }
 
 resource "vault_identity_entity_alias" "approle_identity_alias" {
   depends_on     = [vault_identity_entity.approle_identity]
   for_each       = { for role in var.approles : role.role_name => role if role.create_identity }
+
   name           = each.value.role_name
-  mount_accessor = var.approle_mount_accessor
   canonical_id   = vault_identity_entity.approle_identity[each.value.role_name].id
+  mount_accessor = var.approle_mount_accessor
+  custom_metadata = each.value.identity_metadata
 }
