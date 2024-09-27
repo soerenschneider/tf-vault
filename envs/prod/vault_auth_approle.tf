@@ -23,21 +23,30 @@ resource "vault_identity_group" "approle" {
 }
 
 locals {
-  hosts_definition_file = pathexpand("~/src/github/ansible-inventory-prod/group_vars/all/hosts.yml")
-  #hosts_approles_defined = flatten([for hosts_key, hosts_value in try(yamldecode(file(var.hosts_definition_file)), {}) : [
-  hosts_approles_defined = flatten([for hosts_key, hosts_value in yamldecode(file(local.hosts_definition_file)) : [
-    for location_key, location_values in hosts_value : [
-      for host in location_values : host if lookup(host, "vault_approles", null) != null
-    ]
-    ] if hosts_key == "local_hosts"
-  ])
+  approles_definition_file = "approles.yaml"
+  ip_ranges = {
+    "router.dd.soeren.cloud" : ["192.168.200.3/32"]
+    "router.ez.soeren.cloud" : ["192.168.200.2/32"]
+    "router.pt.soeren.cloud" : ["192.168.200.4/32"]
+    "dd.soeren.cloud" : ["192.168.64.0/21"]
+    "ez.soeren.cloud" : ["192.168.2.0/24"]
+    "pt.soeren.cloud" : ["192.168.72.0/21"]
+    "rs.soeren.cloud" : ["192.168.200.1/32"]
+    "ch.soeren.cloud" : ["192.168.200.5/32"]
+  }
+  ip_ranges_fallback = ["192.168.0.0/16"]
 
-  vault_approles = concat(var.approles, flatten([for host in local.hosts_approles_defined : [
-    for vault in host.vault_approles : merge(
+  vault_approles = concat(var.approles, [
+    for vault in yamldecode(file(local.approles_definition_file)) : merge(
       vault, {
-        "token_bound_cidrs"     = coalescelist(lookup(vault, "token_bound_cidrs", []), tolist([format("%s/24", host.logical)])) # https://github.com/hashicorp/vault/issues/11961
-        "secret_id_bound_cidrs" = coalescelist(lookup(vault, "secret_id_bound_cidrs", []), tolist([format("%s/32", host.logical)]))
+        "token_bound_cidrs" = coalescelist(
+          lookup(vault, "token_bound_cidrs", []),
+          coalescelist(flatten([for regex, value in local.ip_ranges : value if endswith(vault.role_name, regex)]), local.ip_ranges_fallback),
+        )
+        "secret_id_bound_cidrs" = coalescelist(
+          lookup(vault, "secret_id_bound_cidrs", []),
+          coalescelist(flatten([for regex, value in local.ip_ranges : value if endswith(vault.role_name, regex)]), local.ip_ranges_fallback),
+        )
       }
-    )]
-  ]))
+  )])
 }

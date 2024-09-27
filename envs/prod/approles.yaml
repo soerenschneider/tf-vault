@@ -1,0 +1,205 @@
+---
+- role_name: machine-router.ez.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: router.ez.soeren.cloud
+    acmevault_domain: router.ez.soeren.cloud
+
+- role_name: occult-nas.ez.soeren.cloud
+  token_policies: [occult]
+  identity_metadata:
+    occult: nas
+- role_name: machine-nas.ez.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: nas.ez.soeren.cloud
+    acmevault_domain: nas.ez.soeren.cloud
+
+- role_name: machine-vault.ez.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: vault.ez.soeren.cloud
+
+- role_name: machine-k8s.ez.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: k8s.ez.soeren.cloud
+    acmevault_domain: k8s.ez.soeren.cloud
+
+- role_name: machine-dbs.ez.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: dbs.ez.soeren.cloud
+    acmevault_domain: dbs.ez.soeren.cloud
+
+- role_name: machine-dbs-2.ez.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: dbs-2.ez.soeren.cloud
+    acmevault_domain: dbs-2.ez.soeren.cloud
+
+- role_name: machine-vserver.ez.soeren.cloud
+  token_policies: [acmevault_client, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: "vserver.ez.soeren.cloud"
+    acmevault_domain: "vserver.ez.soeren.cloud"
+
+- role_name: machine-vserver-2.ez.soeren.cloud
+  token_policies: [acmevault_client, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: "vserver-2.ez.soeren.cloud"
+    acmevault_domain: "vserver-2.ez.soeren.cloud"
+
+- role_name: machine-vault-2.ez.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: vault-2.ez.soeren.cloud
+
+- role_name: machine-vserver.es.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: vserver.es.soeren.cloud
+
+- role_name: machine-router.dd.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    acmevault_domain: router.dd.soeren.cloud
+    host: router.dd.soeren.cloud
+
+- role_name: machine-testserver.dd.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: testserver.dd.soeren.cloud
+    acmevault_domain: testserver.dd.soeren.cloud
+
+- role_name: machine-vserver.dd.soeren.cloud
+  token_policies: [pki_boyscout, ssh_hosts_signer_server, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: vserver.dd.soeren.cloud
+
+- role_name: occult-nas.dd.soeren.cloud
+  token_policies: [occult]
+  identity_metadata:
+    occult: nas
+
+- role_name: machine-nas.dd.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine, occult]
+  identity_metadata:
+    host: nas.dd.soeren.cloud
+    acmevault_domain: nas.dd.soeren.cloud
+    occult: nas
+
+- role_name: machine-vault.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: vault.dd.soeren.cloud
+
+- role_name: machine-k8s.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server]
+  identity_metadata:
+    host: k8s.dd.soeren.cloud
+
+- role_name: machine-dbs.dd.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: dbs.dd.soeren.cloud
+
+- role_name: machine-vault-unseal.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine, app_vault_unsealer_prod]
+  identity_metadata:
+    host: ansible-vault-unseal.dd.soeren.cloud
+
+- role_name: machine-sensors-livingroom.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: sensors-livingroom.dd.soeren.cloud
+
+- role_name: machine-sensors-corridor.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: sensors-corridor.dd.soeren.cloud
+
+- role_name: machine-sensors-office.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: sensors-office.dd.soeren.cloud
+
+- role_name: machine-sensors-bedroom.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: sensors-bedroom.dd.soeren.cloud
+
+- role_name: machine-mpd-livingroom.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: mpd-livingroom.dd.soeren.cloud
+
+- role_name: machine-mpd-bedroom.dd.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: mpd-bedroom.dd.soeren.cloud
+
+- role_name: "machine-mpd-office.dd.soeren.cloud"
+  token_policies: ["ssh_hosts_signer_server", "pki_boyscout", "pki_general_machine"]
+  identity_metadata:
+    host: "mpd-office.dd.soeren.cloud"
+
+- role_name: "machine-router.pt.soeren.cloud"
+  token_policies: ["acmevault_client", "ssh_hosts_signer_server", "pki_boyscout", "pki_general_machine", "kv2_machine"]
+  # add both ips, vpn and lan
+  secret_id_bound_cidrs: [192.168.73.1/32, 192.168.200.4/32]
+  token_bound_cidrs: [192.168.73.1/32, 192.168.200.4/32]
+  identity_metadata:
+    acmevault_domain: "router.pt.soeren.cloud"
+    host: "router.pt.soeren.cloud"
+
+- role_name: machine-vserver.pt.soeren.cloud
+  token_policies: [pki_boyscout, pki_general_machine, kv2_machine]
+  identity_metadata:
+    host: vserver.pt.soeren.cloud
+
+- role_name: occult-nas.pt.soeren.cloud
+  token_policies: [occult]
+  identity_metadata:
+    occult: nas
+- role_name: machine-nas.pt.soeren.cloud
+  token_policies: [acmevault_client, ssh_hosts_signer_server, pki_boyscout, pki_general_machine, kv2_machine, occult]
+  identity_metadata:
+    host: nas.pt.soeren.cloud
+    acmevault_domain: nas.pt.soeren.cloud
+    occult: nas
+
+- role_name: acmevault-dbs.pt.soeren.cloud
+  token_policies: [acmevault_client]
+  identity_metadata:
+    acmevault_domain: dbs.pt.soeren.cloud
+- role_name: machine-dbs.pt.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: dbs.pt.soeren.cloud
+
+- role_name: machine-vault.pt.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: vault.pt.soeren.cloud
+
+- role_name: machine-pool.pt.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: pool.pt.soeren.cloud
+
+- role_name: machine-sensors-office.pt.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: sensors-office.pt.soeren.cloud
+
+- role_name: machine-sensors-corrdior.pt.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: sensors-corridor.pt.soeren.cloud
+
+- role_name: machine-sensors-livingroom.pt.soeren.cloud
+  token_policies: [ssh_hosts_signer_server, pki_boyscout, pki_general_machine]
+  identity_metadata:
+    host: sensors-livingroom.pt.soeren.cloud
+
