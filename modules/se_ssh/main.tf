@@ -27,6 +27,9 @@ resource "vault_ssh_secret_backend_role" "roles" {
   algorithm_signer        = each.value.algorithm_signer
   default_extensions      = each.value.default_extensions
   allowed_extensions      = each.value.allowed_extensions
+  allowed_domains         = join(",", each.value.allowed_domains)
+  allow_bare_domains      = false
+  allow_subdomains        = true
 
   allowed_user_key_config {
     type    = "rsa"

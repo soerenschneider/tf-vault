@@ -24,6 +24,7 @@ variable "roles" {
     max_ttl            = optional(number, 7200)
     cidr_list          = optional(list(string), [])
     allowed_users      = optional(list(string), [])
+    allowed_domains    = optional(list(string), [])
     default_user       = optional(string)
     algorithm_signer   = optional(string, "rsa-sha2-512")
     default_extensions = optional(map(string), {})

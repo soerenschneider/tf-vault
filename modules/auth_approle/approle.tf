@@ -19,7 +19,7 @@ resource "vault_approle_auth_backend_role" "approle" {
 
 resource "vault_identity_entity" "approle_identity" {
   for_each = { for role in var.approles : role.role_name => role if role.create_identity }
-  name     = each.value.role_name
+  name     = format("approle-%s", each.key)
   policies = each.value.token_policies
   metadata = each.value.identity_metadata
 }

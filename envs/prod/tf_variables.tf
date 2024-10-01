@@ -81,6 +81,8 @@ variable "auth_k8s" {
       token_ttl               = optional(number)
       token_policies          = list(string)
       audience                = optional(string)
+      metadata                = optional(map(string))
+      service_account_id      = optional(string)
     }))
   }))
 
@@ -106,6 +108,7 @@ variable "secret_engines_ssh" {
       max_ttl            = optional(number)
       cidr_list          = optional(list(string))
       allowed_users      = optional(list(string))
+      allowed_domains    = optional(list(string))
       default_user       = optional(string)
       algorithm_signer   = optional(string)
       default_extensions = optional(map(string))
