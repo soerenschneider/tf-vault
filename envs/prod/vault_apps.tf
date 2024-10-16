@@ -20,11 +20,6 @@ module "occult" {
   kv_path = vault_mount.kv.path
 }
 
-module "prometheus" {
-  source      = "../../modules/app_prometheus"
-  token_cidrs = local.server_cidrs
-}
-
 module "vault_unsealer" {
   source = "../../modules/app_vault_unsealer"
 }

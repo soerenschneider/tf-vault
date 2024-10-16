@@ -7,10 +7,24 @@ path "${vault_mount.kv.path}/data/machine/{{ identity.entity.metadata.host }}/*"
 EOT
 }
 
+resource "vault_policy" "prometheus" {
+  name = "prometheus"
+
+  policy = <<EOT
+path "/sys/metrics*" {
+  capabilities = ["read", "list"]
+}
+EOT
+}
+
 resource "vault_policy" "soeren_cloud" {
   name   = "soeren_cloud"
   policy = <<EOT
 path "${vault_mount.kv.path}/data/machine/{{ identity.entity.metadata.host }}/*" {
+  capabilities = ["read"]
+}
+
+path "${vault_mount.kv.path}/data/soeren.cloud/dc/{{ identity.entity.metadata.datacenter }}/*" {
   capabilities = ["read"]
 }
 
