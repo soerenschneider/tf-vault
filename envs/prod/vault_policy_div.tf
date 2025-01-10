@@ -37,3 +37,13 @@ path "${vault_mount.kv.path}/data/soeren.cloud/k8s/{{ identity.entity.metadata.k
 }
 EOT
 }
+
+
+resource "vault_policy" "kv2_backup" {
+  name   = "kv2_backup"
+  policy = <<EOT
+path "${vault_mount.kv.path}/data/*" {
+  capabilities = ["read", "list"]
+}
+EOT
+}
