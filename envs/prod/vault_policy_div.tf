@@ -42,7 +42,7 @@ EOT
 resource "vault_policy" "kv2_backup" {
   name   = "kv2_backup"
   policy = <<EOT
-path "${vault_mount.kv.path}/data/*" {
+path "${vault_mount.kv.path}/*" {
   capabilities = ["read", "list"]
 }
 EOT
