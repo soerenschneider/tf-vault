@@ -1,16 +1,3 @@
-locals {
-  server_cidrs = [
-    "192.168.2.0/24",
-    "192.168.65.0/24",
-    "192.168.73.0/24"
-  ]
-}
-
-variable "hosts_definition_file" {
-  type    = string
-  default = ""
-}
-
 variable "aws" {
   type = object({
     route53_hosted_zone = string
