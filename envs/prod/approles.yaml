@@ -21,6 +21,12 @@
     host: router.ez.soeren.cloud
     acmevault_domain: router.ez.soeren.cloud
 
+- role_name: machine-auth.ez.soeren.cloud
+  token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
+  identity_metadata:
+    host: auth.ez.soeren.cloud
+    acmevault_domain: auth.ez.soeren.cloud
+
 - role_name: machine-nas.ez.soeren.cloud
   token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
   identity_metadata:
@@ -73,6 +79,18 @@
     acmevault_domain: router.dd.soeren.cloud
     host: router.dd.soeren.cloud
 
+- role_name: machine-auth.dd.soeren.cloud
+  token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
+  identity_metadata:
+    host: auth.dd.soeren.cloud
+    acmevault_domain: auth.dd.soeren.cloud
+
+- role_name: machine-auth-2.dd.soeren.cloud
+  token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
+  identity_metadata:
+    host: auth-2.dd.soeren.cloud
+    acmevault_domain: auth-2.dd.soeren.cloud
+
 - role_name: machine-testserver.dd.soeren.cloud
   token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
   identity_metadata:
@@ -101,6 +119,12 @@
   identity_metadata:
     host: k8s.dd.soeren.cloud
     acmevault_domain: k8s.dd.soeren.cloud
+
+- role_name: machine-k8s-dqs.dd.soeren.cloud
+  token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
+  identity_metadata:
+    host: k8s-dqs.dd.soeren.cloud
+    acmevault_domain: k8s-dqs.dd.soeren.cloud
 
 - role_name: machine-dbs.dd.soeren.cloud
   token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
