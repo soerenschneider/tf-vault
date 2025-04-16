@@ -138,6 +138,12 @@
     host: dbs.dd.soeren.cloud
     acmevault_domain: dbs.dd.soeren.cloud
 
+- role_name: machine-dbs-2.dd.soeren.cloud
+  token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
+  identity_metadata:
+    host: dbs-2.dd.soeren.cloud
+    acmevault_domain: dbs-2.dd.soeren.cloud
+
 - role_name: machine-vault-unseal.dd.soeren.cloud
   token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server, app_vault_unsealer_prod]
   identity_metadata:
