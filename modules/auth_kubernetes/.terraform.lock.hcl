@@ -2,20 +2,30 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/vault" {
-  version = "3.20.1"
+  version = "5.0.0"
   hashes = [
-    "h1:CzYDxHUxrfIvjWsuWYBWxS4dDV6AW5lmj0/H/JL128A=",
-    "zh:28623d9254a8869c5717cef8f4ad35f13688d40194c5e2f44c0f49161edf77da",
-    "zh:3358d6ec273632c13ffd2c0f0588ca6eb6e82a786c194f3863dcfb57712d3455",
-    "zh:3eaca2f2198ebbd4a0860800ce63a507cec54e6bc82a89b0cb679e01bb848a95",
-    "zh:415c6e20fb0a1a330380af72a692e1a89923bc5ca7721fbd57e5289435938def",
-    "zh:76ce29be387abb4c47a664d8af011bb9ff8a9877487ce7edf56311082bcf4603",
+    "h1:4ddhKTjKvWZyJ3x953MAIZASeG3bkCQqhWpRXBwlXXM=",
+    "h1:4wDWi9DxBkdAUVVNApBt9/5RKsKy4wbC+UVLrGs1dBQ=",
+    "h1:9EqIPF7C8PYYknuYKzXuKrzaOPXLc7iJXM5Wo4UsoC0=",
+    "h1:PB84DSssgbmcKiD6pdPCVMDPKDZlCExY/RhEimG7puc=",
+    "h1:eal/YWB4cu0R4p+X5uS2jYGaFSlzqUmocHtHu5jzMpk=",
+    "h1:pdjtRcrSKVODv1v3onwuFEd0yHtQ3usAWGjAFOfJ6Ds=",
+    "h1:qfGN+sceFgcwrfWhxaF1vNUx6Q0s3Rg963wBuVrU948=",
+    "h1:qp2exzdkLoWZMV+Kl69cAv/Y+R7ACbFlv+FyVvyWYXQ=",
+    "h1:suV2rT+bkZfmu95otC7bm2Aq2l3BMLBxMz+X4Af/sQI=",
+    "h1:t3iu7Od5IPqzFw3GO7YdVOUOuLqCwbKysi2T/eg/3Uc=",
+    "h1:tJrrht82NUrKJqjqtK+IOBvsf/2fmj9VcRaMmsoUerQ=",
+    "zh:046e9a6e0e178c6704b914048f4c8eb9f117c850bc731392b2749e1e889dc340",
+    "zh:2589881ed0757e9de85fde6d22688eca32c51a52dfa1355acbd58a749071148b",
+    "zh:3566b10e4958652d5aa675175b832aaa3f3cee529b4db863adfb12af30c6a5ef",
+    "zh:50e6df22efd6e7403c3d781d7c145247c78d05dd25e86dc5bade6176660d3570",
+    "zh:6828c2a24d7384fc6af19d8b1851cb1f3f80ccff890ae36e6f1f2ec25b6ce6b1",
+    "zh:6eaf1b3864bc184f569eef53ee2540585b82301cc77f27cb19886e4f792776cb",
     "zh:78d5eefdd9e494defcb3c68d282b8f96630502cac21d1ea161f53cfe9bb483b3",
-    "zh:8724f824ad93004d5aabf54f2971d5a6326c7827cca1a4177befafbbc816f570",
-    "zh:c1d02a2f8e40a01ecfd16e36b5b1bbbabd7dcdc553d1122c07f59ca6f7844ab4",
-    "zh:c718d9973344a9c1306760118717f81f68a6c7235e7d3e6c8597fdffdcb94f0d",
-    "zh:d423cfdce7bc331b70aef6dc61861afa3b96cb423eedd8af0dc3b3f948248bac",
-    "zh:e8d3abdf6ee23d51c361407b8d7e858edfa60c468614da8b26a66f64d3c75312",
-    "zh:eec1cd1614bd2b49f4a00dccdf5cc2ac2875fbc53f59d4e628e4abbf0e62ea53",
+    "zh:9cf7f436363924638f2bd4e2b3afb472f5f6e2f06449a9a594adbbb81bc9df33",
+    "zh:b0863744ae8796e6115fccef9ca29dd9c016a0e0131dbc8d7f8b210155f7403e",
+    "zh:ba77fdd9899f991ff5b048749ea5426fcc99af76bba186413c3d6823f2b35c7a",
+    "zh:d3f2fa5a6502e3136fa46814da0a3408e0e05a65b5882b9f19b969b96f6a7052",
+    "zh:f355ae2a5745192986403e94b1286eed957d74fee046d3e28734dac8bec1d4c9",
   ]
 }
