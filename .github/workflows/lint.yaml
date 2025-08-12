@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     container: hashicorp/terraform:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: fmt
         run: terraform fmt -recursive -check
       - name: validate
@@ -30,6 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/soerenschneider/terraform-tools:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: tflint
         run: tflint --recursive
