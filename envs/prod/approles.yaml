@@ -147,7 +147,7 @@
 - role_name: machine-vault-unseal.dd.soeren.cloud
   token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server, app_vault_unsealer_prod]
   identity_metadata:
-    host: ansible-vault-unseal.dd.soeren.cloud
+    host: vault-unseal.dd.soeren.cloud
 
 - role_name: machine-sensors-livingroom.dd.soeren.cloud
   token_policies: [acmevault_client, kv2_machine, pki_boyscout, pki_general_machine, ssh_hosts_signer_server]
