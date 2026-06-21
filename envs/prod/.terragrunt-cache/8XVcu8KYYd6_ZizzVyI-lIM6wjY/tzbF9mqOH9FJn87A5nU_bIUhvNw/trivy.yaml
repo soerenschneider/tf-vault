@@ -1,0 +1,16 @@
+---
+ignorefile: .trivyignore.yaml
+cache-dir: $HOME/.cache/trivy
+exit-code: 1
+
+scan:
+  security-checks:
+    - vuln
+    - secret
+    - misconfig
+
+severity:
+  - LOW
+  - MEDIUM
+  - HIGH
+  - CRITICAL
