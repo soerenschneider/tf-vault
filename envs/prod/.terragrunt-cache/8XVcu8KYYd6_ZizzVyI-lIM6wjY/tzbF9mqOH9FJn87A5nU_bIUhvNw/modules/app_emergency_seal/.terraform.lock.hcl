@@ -2,19 +2,30 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/vault" {
-  version = "3.2.1"
+  version = "5.10.0"
   hashes = [
-    "h1:W2KBadOmTGxHdZU5C8S84kbhqaVY1NyHsMARsgHvln8=",
-    "zh:0fcef2460da2fd0e1452603edf0a994fdd99b9373dd9312af3415b96151437d1",
-    "zh:37920773305a1366a79b31a7be0ceeca81a807ee1eef37402e27b48b967c9827",
-    "zh:5f43a4f7934ba50b1a2f383529efa764709af6e7ad1b8bc45afe8faf6b977afe",
-    "zh:6ddc4e1cc02208a774e1ccdd0d2df0bedac53864c89aa7a64c557132255ecd65",
-    "zh:7378a896193b9fcd3c2461c34a521f95dcd6a18d909214aeef923d39775dd4a3",
-    "zh:8cf05ab85d8cc8556a970c2e8e539d99ce580e0f17fee1876ff359da8a2e5685",
-    "zh:a031748c28dbadc3d40b0c57275a4b1b1be1933ad5d93b60c9b868c48f5432b7",
-    "zh:a9c03dc147a5a18a30ad3ac011f4abafc64388c1ee802d8249783ffe935e350d",
-    "zh:af1c1d49c83ae00a44c14cf2b69473aaf0c1258258c5c65655774ac1c940ffde",
-    "zh:afb1cac21b1fc3263b0d0d216b14ada486578d6803d1ee732e04d9e7b96c2cb6",
-    "zh:f461e2501174f8bd73644d7a6a0c0aee619fc957d549880cc0416ae786658bcd",
+    "h1:4EQqV1Z766OhSDF7IBtsLIAv3C+VwtjqSgcOAeS1r9I=",
+    "h1:5r+6zHTDXO663D5hmuuJ3w/uvh+b/jM800TlYRQ65rY=",
+    "h1:7f7VVf1oCINb6E1sM0ADRBZET8j20DOO+zGBg1rO1MU=",
+    "h1:DAC25MsoejPJw3Zovg4i4ZNqOXhhZt69+5/KDPmtVIk=",
+    "h1:RSy4seqa5PnKLu+9jnmnEJt3Stgug3yX6/HcXEfl/ZA=",
+    "h1:Rzjlo/CaRp0IaXbGCL+lOdK5PawLwNcxtDlN1EaNHXA=",
+    "h1:Zg6plRUPEjk/6u4GeBa/Rc2rTVs5E07TdCE01m5n6ME=",
+    "h1:dWnuVOrJuv+5ETtd8OWFUWOZf2BGJocPDMbbbZ0tJKg=",
+    "h1:iOnu+FotogVoz5eh+fL6XLU1LIdumPZkrEl+PgUrzKM=",
+    "h1:ix1iMVIr/RRzt8YRdrJ7h0DnqGC4Su0NNiWp9OBbGYc=",
+    "h1:q3LrY6CfrkRn4IqvEAKQ6yPSdWA4uLqdN3mHTdd0haY=",
+    "zh:1b4c310742b4850658749ee0fb456783cd0abf9d4ec77dba1135bbe1b8ebc01c",
+    "zh:27d0393d24a21ace3f971b71c35c7110c933e7a0f73e345e13b81b3d42023a21",
+    "zh:41db18bc17bc18d738698bdc3c91dd754bcecb4a38dedad2faf20b6fba2c5d45",
+    "zh:46a8ab55a2c55bd001c4699ff7074dcc4e879785708329ae5f9cb1977e86dcf4",
+    "zh:61093c753ae09b0eb52de7635567207dce3b26908e8a7474bb49362163074bdb",
+    "zh:78d5eefdd9e494defcb3c68d282b8f96630502cac21d1ea161f53cfe9bb483b3",
+    "zh:86958fa990687b9d0ad30146018d479e694d948520bb9f72ef0e89b1040aa947",
+    "zh:9083f01148589ad8607f6e9010ab9007f41639f19d12d1539fdb7bacac7ae2c3",
+    "zh:91d5582a9492e218367ce4a574bc25c413c99fb9b722d4de2872f595901da455",
+    "zh:9b6efda8b43ae4e6be556720dc958eaa30b4f9d76680096857f8c35ecba2cb20",
+    "zh:d9215f747b04e1a8a2c81b54b0d58ea8845bcb24e1fdbefd93f6b280942cf33f",
+    "zh:e08408a07b10855c872497d6f16c00badc2cf30940b3e888bedadba10f94811a",
   ]
 }
