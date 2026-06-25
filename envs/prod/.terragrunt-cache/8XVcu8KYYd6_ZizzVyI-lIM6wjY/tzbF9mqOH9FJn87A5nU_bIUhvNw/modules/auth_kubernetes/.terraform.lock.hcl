@@ -2,20 +2,30 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/vault" {
-  version = "3.20.1"
+  version = "5.10.0"
   hashes = [
-    "h1:CzYDxHUxrfIvjWsuWYBWxS4dDV6AW5lmj0/H/JL128A=",
-    "zh:28623d9254a8869c5717cef8f4ad35f13688d40194c5e2f44c0f49161edf77da",
-    "zh:3358d6ec273632c13ffd2c0f0588ca6eb6e82a786c194f3863dcfb57712d3455",
-    "zh:3eaca2f2198ebbd4a0860800ce63a507cec54e6bc82a89b0cb679e01bb848a95",
-    "zh:415c6e20fb0a1a330380af72a692e1a89923bc5ca7721fbd57e5289435938def",
-    "zh:76ce29be387abb4c47a664d8af011bb9ff8a9877487ce7edf56311082bcf4603",
+    "h1:4EQqV1Z766OhSDF7IBtsLIAv3C+VwtjqSgcOAeS1r9I=",
+    "h1:5r+6zHTDXO663D5hmuuJ3w/uvh+b/jM800TlYRQ65rY=",
+    "h1:7f7VVf1oCINb6E1sM0ADRBZET8j20DOO+zGBg1rO1MU=",
+    "h1:DAC25MsoejPJw3Zovg4i4ZNqOXhhZt69+5/KDPmtVIk=",
+    "h1:RSy4seqa5PnKLu+9jnmnEJt3Stgug3yX6/HcXEfl/ZA=",
+    "h1:Rzjlo/CaRp0IaXbGCL+lOdK5PawLwNcxtDlN1EaNHXA=",
+    "h1:Zg6plRUPEjk/6u4GeBa/Rc2rTVs5E07TdCE01m5n6ME=",
+    "h1:dWnuVOrJuv+5ETtd8OWFUWOZf2BGJocPDMbbbZ0tJKg=",
+    "h1:iOnu+FotogVoz5eh+fL6XLU1LIdumPZkrEl+PgUrzKM=",
+    "h1:ix1iMVIr/RRzt8YRdrJ7h0DnqGC4Su0NNiWp9OBbGYc=",
+    "h1:q3LrY6CfrkRn4IqvEAKQ6yPSdWA4uLqdN3mHTdd0haY=",
+    "zh:1b4c310742b4850658749ee0fb456783cd0abf9d4ec77dba1135bbe1b8ebc01c",
+    "zh:27d0393d24a21ace3f971b71c35c7110c933e7a0f73e345e13b81b3d42023a21",
+    "zh:41db18bc17bc18d738698bdc3c91dd754bcecb4a38dedad2faf20b6fba2c5d45",
+    "zh:46a8ab55a2c55bd001c4699ff7074dcc4e879785708329ae5f9cb1977e86dcf4",
+    "zh:61093c753ae09b0eb52de7635567207dce3b26908e8a7474bb49362163074bdb",
     "zh:78d5eefdd9e494defcb3c68d282b8f96630502cac21d1ea161f53cfe9bb483b3",
-    "zh:8724f824ad93004d5aabf54f2971d5a6326c7827cca1a4177befafbbc816f570",
-    "zh:c1d02a2f8e40a01ecfd16e36b5b1bbbabd7dcdc553d1122c07f59ca6f7844ab4",
-    "zh:c718d9973344a9c1306760118717f81f68a6c7235e7d3e6c8597fdffdcb94f0d",
-    "zh:d423cfdce7bc331b70aef6dc61861afa3b96cb423eedd8af0dc3b3f948248bac",
-    "zh:e8d3abdf6ee23d51c361407b8d7e858edfa60c468614da8b26a66f64d3c75312",
-    "zh:eec1cd1614bd2b49f4a00dccdf5cc2ac2875fbc53f59d4e628e4abbf0e62ea53",
+    "zh:86958fa990687b9d0ad30146018d479e694d948520bb9f72ef0e89b1040aa947",
+    "zh:9083f01148589ad8607f6e9010ab9007f41639f19d12d1539fdb7bacac7ae2c3",
+    "zh:91d5582a9492e218367ce4a574bc25c413c99fb9b722d4de2872f595901da455",
+    "zh:9b6efda8b43ae4e6be556720dc958eaa30b4f9d76680096857f8c35ecba2cb20",
+    "zh:d9215f747b04e1a8a2c81b54b0d58ea8845bcb24e1fdbefd93f6b280942cf33f",
+    "zh:e08408a07b10855c872497d6f16c00badc2cf30940b3e888bedadba10f94811a",
   ]
 }
