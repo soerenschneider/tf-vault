@@ -1,0 +1,206 @@
+se_aws:
+    default:
+        path: aws
+        environment: prod
+        account_id: "457894857334"
+        roles:
+            - name: developer
+              policy_arns:
+                - arn:aws:iam::aws:policy/PowerUserAccess
+                - arn:aws:iam::aws:policy/IAMReadOnlyAccess
+            - name: admin
+              policy_arns:
+                - arn:aws:iam::aws:policy/PowerUserAccess
+                - arn:aws:iam::aws:policy/IAMFullAccess
+aws:
+    route53_hosted_zone: Z0237504SXBCD16NK65T
+
+auth_k8s:
+    svc.ez.soeren.cloud:
+        mount_path: svc.ez.soeren.cloud
+        host: https://192.168.2.227:6443
+        ca_cert_file: files/k8s-svc.ez.soeren.cloud.crt
+        token_reviewer_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEzR0w4QUVlaE1HWlVoZXA5TEVGYzhmUVN6S3B3ejlpMEd2LVdMMG1pWkEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNmIwNmRkYTYtZjg4Zi00ZThjLWI3ODctNTQyYTI5YmZmNzE1Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.hHr4C3T9ojhNVMZHzZhsZhogLbxnAOVbykd37F6IeKwjYirt4jjDRk-t5LdxqpmtecgzfQm1QSTOkWVLvnUZyMI9A0lJaWywN08dV4jEhllfzvco78vfh9TdbMRHEI3lAxeidSaZqQlExFrypecgseiDgsvkX-2QvtgpNcnAXSIpgfRdZJUeOHXgsxzIPHDhLalnRflJfJJ3sDMGT0jok8af6glLnbm3j-f88vFwNAfpwaUCm5GfYEt83H8s7wLMBra8yf_7RSjuerw9tfbqGXZhjPbq7FDpb3FAv39OUxDZlewLvg-riCzVf1qPsixoXXTc4tTqz6Gk04B6384z2Q
+        roles:
+            - name: aether
+              bound_namespaces:
+                - aether
+              token_ttl: 3600
+              token_policies:
+                - pki_taskwarrior_aether
+                - default
+            - name: vault-backup
+              bound_namespaces:
+                - vault-backup
+              token_ttl: 600
+              token_policies:
+                - kv2_backup
+                - default
+            - name: cicd-ansible
+              bound_namespaces:
+                - cicd-ansible
+              token_ttl: 3600
+              token_policies:
+                - cicd_ansible
+                - ssh_clients_signer_user
+                - default
+            - name: acmevault
+              bound_namespaces:
+                - acmevault
+              token_ttl: 3600
+              token_policies:
+                - acmevault_server
+                - default
+            - name: certmanager
+              bound_namespaces:
+                - monitoring
+              token_ttl: 3600
+              token_policies:
+                - pki_general_certmanager
+                - default
+            - name: external-secrets
+              bound_namespaces:
+                - external-secrets
+              token_ttl: 3600
+              service_account_id: 5c4532f7-e72f-424e-86bf-ef71ae52bfd1
+              token_policies:
+                - k8s-kv2-dqs.dd.soeren.cloud
+                - default
+                - soeren_cloud
+              metadata:
+                environment: prod
+                cluster: svc.ez.soeren.cloud
+            - name: monitoring
+              bound_namespaces:
+                - monitoring
+              token_ttl: 43200
+              token_policies:
+                - prometheus
+                - default
+    svc.dd.soeren.cloud:
+        mount_path: svc.dd.soeren.cloud
+        host: https://192.168.65.27:6443
+        ca_cert_file: files/k8s-svc.dd.soeren.cloud.crt
+        token_reviewer_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6IjlRc0htQmdpclFPZWMzTzJqTmF4cy0xOG9rcjFQOGF0OHRpbTBNQXB1aEEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYWY1NjAxMTYtNTQzOC00NzE3LTk4NzgtNTg0M2ZiMzY5NGMyIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.gvHeRueI2bALWf9A0kfpfKyIMq_wBFu1seGiMNisKwSC7yganTmhjj8B8eNbDrA2hsuzVs9z_dBIItGDr2fX8lzUz5XtoYPb1BMrc7AmKy0HalqezjrhhtREI0Qa36kaxXhdFx1mjw72gy7NZV1qOjaWDuZkjPpTZq5H5iXyw0a_mhxV-AU_GILMImU_B2qFbyMQJt-yCgENtkzFZCK2OxtLyLtutkCCVU0khA46m-TyIbV6mWTIRAIXfElUi_qJtUf5LTseTjqNnXRQi3a60X-xOdK4IrnVSozGQJDWIsN1o994MRURfJHg1kxaoE9FbbCPwPgV7lbaNCpWaxZsOA
+        roles:
+            - name: aether
+              bound_namespaces:
+                - aether
+              token_ttl: 3600
+              token_policies:
+                - pki_taskwarrior_aether
+                - default
+            - name: certmanager
+              bound_namespaces:
+                - monitoring
+              token_ttl: 3600
+              token_policies:
+                - pki_general_certmanager
+                - default
+            - name: rabbitmq
+              bound_namespaces:
+                - rabbitmq
+              token_ttl: 3600
+              token_policies:
+                - pki_general_rabbitmq
+                - default
+            - name: external-secrets
+              bound_namespaces:
+                - external-secrets-system
+              token_ttl: 3600
+              service_account_id: 4114d307-075a-43a3-977a-56ebc3e3900e
+              token_policies:
+                - k8s-kv2-dqs.dd.soeren.cloud
+                - default
+                - soeren_cloud
+              metadata:
+                environment: prod
+                cluster: dqs.dd.soeren.cloud
+            - name: acmevault
+              bound_namespaces:
+                - acmevault
+              token_ttl: 3600
+              token_policies:
+                - acmevault_server
+                - default
+            - name: monitoring
+              bound_namespaces:
+                - monitoring
+              token_ttl: 43200
+              token_policies:
+                - prometheus
+                - default
+            - name: vault-backup
+              bound_namespaces:
+                - vault-backup
+              token_ttl: 600
+              token_policies:
+                - kv2_backup
+                - default
+    svc.pt.soeren.cloud:
+        mount_path: svc.pt.soeren.cloud
+        host: https://192.168.73.21:6443
+        ca_cert_file: files/k8s-svc.pt.soeren.cloud.crt
+        token_reviewer_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6IjZwMmhWLV9XWUpRb0JhMDdxeVZzMk5WeE9mbGlsa3ZBUUtkaFBzU0dwVHMifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNGEyNTk5YzEtZDUyNC00NzU5LWFlZWEtNWUxYjQ5YjZlMTkwIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.D2hfHwb5jD9qcLRUvzLLoqkxhwf5yQW4aE4UhhgnVMoZ-hnr5DeVZ3uklO57Iinz6d4C2tgGno4d8nxbR6xduw9ZR1aOZwg9jJWcyftp3qftH9UXiLheF9M98-EI1nJe64SnBuIeAh6PypJQakVq0DSi3mB3G0liITjKrghL5w7d3tMDxK0arT-R-RuHku9FIvZ8tzgTefXV523ZJ7l6bEnwO5FzPJheXSjKUzRX8iSylLHo5kWnXq6tRgOv5qMeCbNAi5qrkATVA749w-RTAOptvjj5grdBlXs5_ty-c74MbE4Fqse1JZASfMFNwJMUBLB4-1YzeypnZ76PLRz9sA
+        roles:
+            - name: aether
+              bound_namespaces:
+                - aether
+              token_ttl: 3600
+              token_policies:
+                - pki_taskwarrior_aether
+                - default
+            - name: certmanager
+              bound_namespaces:
+                - monitoring
+              token_ttl: 3600
+              token_policies:
+                - pki_general_certmanager
+                - default
+            - name: rabbitmq
+              bound_namespaces:
+                - rabbitmq
+              token_ttl: 3600
+              token_policies:
+                - pki_general_rabbitmq
+                - default
+            - name: external-secrets
+              bound_namespaces:
+                - external-secrets-system
+              token_ttl: 3600
+              service_account_id: e204363d-bab4-433e-921c-51a727cc3a0f
+              token_policies:
+                - k8s-kv2.pt.soeren.cloud
+                - default
+                - soeren_cloud
+              metadata:
+                environment: prod
+                cluster: dqs.dd.soeren.cloud
+            - name: acmevault
+              bound_namespaces:
+                - acmevault
+              token_ttl: 3600
+              token_policies:
+                - acmevault_server
+                - default
+            - name: monitoring
+              bound_namespaces:
+                - monitoring
+              token_ttl: 43200
+              token_policies:
+                - prometheus
+                - default
+            - name: vault-backup
+              bound_namespaces:
+                - vault-backup
+              token_ttl: 600
+              token_policies:
+                - kv2_backup
+                - default
+pki_allowed_token_domains:
+    - soeren-yubikey5.soeren.cloud
+cidr_list:
+    - 192.168.2.0/24
+    - 192.168.64.0/24
+    - 192.168.72.0/24
+approles: []

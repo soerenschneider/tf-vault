@@ -1,0 +1,262 @@
+db_mariadb_dbs:
+    - name: mariadb_prd
+      username: root
+      password: zieRechaolagielielooHo2aboo7eh8e
+      connection_url: '{{username}}:{{password}}@tcp(dbs.ha.soeren.cloud:3307)/?tls=true'
+      roles:
+        - name: user
+          creation_statements:
+            - CREATE USER '{{name}}' IDENTIFIED BY '{{password}}'
+            - GRANT SELECT ON *.* TO '{{name}}';
+se_aws:
+    default:
+        path: aws
+        environment: prod
+        account_id: "457894857334"
+        roles:
+            - name: developer
+              policy_arns:
+                - arn:aws:iam::aws:policy/PowerUserAccess
+                - arn:aws:iam::aws:policy/IAMReadOnlyAccess
+            - name: admin
+              policy_arns:
+                - arn:aws:iam::aws:policy/PowerUserAccess
+                - arn:aws:iam::aws:policy/IAMFullAccess
+aws:
+    route53_hosted_zone: Z0237504SXBCD16NK65T
+mariadb:
+    username: root
+    password: zieRechaolagielielooHo2aboo7eh8e
+auth_k8s:
+    dqs.dd.soeren.cloud:
+        mount_path: dqs.dd.soeren.cloud
+        host: https://192.168.65.32:6443
+        ca_cert_file: files/k8s-dqs.dd.soeren.cloud.crt
+        token_reviewer_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg0aTcxWXRseUllTnZRNE0wMmpOdlZib21fa1hLQzVDbVQtSm5kTzlUOEEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiMWEzNjM1ZGEtNmFmYi00ZWM0LTk0ZjMtZDFkN2U0OGFjNzk2Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.cX28zO8NVsQbzTnTQ_rTKtgmzmgoT8KbnXKAzoJ3FbkxSj-mtzCIBFhHnW4n4pXT83ZuQyfvgdFVqVe03BHBjbxH4ifFPJKJZUzNCh4KSqXzK0XInZ7UXTBnrjerYGu8By0K9J8DCNImHAZHH5RkY7Idk8NngD6VdUoa_q3XDNLdwp0KYgvKi0YZcT2kqXINEVjN95MHk8WGuSRjWD8sIFI214xUoutgrRsVuz9T7QCM4XIv7BtvmH0MeCV1C9D_V5xwjxEtdN-Y2SZzPjVkMytGiJ7BJfe-ZR-ZYqTsR-lfXTnCWzZNchiRdL1ot3uIgp5aS7ZypDBMpxeMHbi_JQ
+        roles:
+            - name: acmevault
+              bound_namespaces:
+                - acmevault
+              token_ttl: 3600
+              token_policies:
+                - acmevault_server
+                - default
+            - name: certmanager
+              bound_namespaces:
+                - monitoring
+              token_ttl: 3600
+              token_policies:
+                - pki_general_certmanager
+                - default
+            - name: external-secrets
+              bound_namespaces:
+                - external-secrets-system
+              token_ttl: 3600
+              service_account_id: 5ee7db84-4efe-40f3-b5bb-59431f6d2689
+              token_policies:
+                - k8s-kv2-dqs.dd.soeren.cloud
+                - default
+                - soeren_cloud
+              metadata:
+                environment: dqs
+                cluster: dqs.dd.soeren.cloud
+            - name: monitoring
+              bound_namespaces:
+                - monitoring
+              token_ttl: 43200
+              token_policies:
+                - prometheus
+                - default
+    svc.ez.soeren.cloud:
+        mount_path: svc.ez.soeren.cloud
+        host: https://192.168.2.227:6443
+        ca_cert_file: files/k8s-svc.ez.soeren.cloud.crt
+        token_reviewer_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEzR0w4QUVlaE1HWlVoZXA5TEVGYzhmUVN6S3B3ejlpMEd2LVdMMG1pWkEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNmIwNmRkYTYtZjg4Zi00ZThjLWI3ODctNTQyYTI5YmZmNzE1Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.hHr4C3T9ojhNVMZHzZhsZhogLbxnAOVbykd37F6IeKwjYirt4jjDRk-t5LdxqpmtecgzfQm1QSTOkWVLvnUZyMI9A0lJaWywN08dV4jEhllfzvco78vfh9TdbMRHEI3lAxeidSaZqQlExFrypecgseiDgsvkX-2QvtgpNcnAXSIpgfRdZJUeOHXgsxzIPHDhLalnRflJfJJ3sDMGT0jok8af6glLnbm3j-f88vFwNAfpwaUCm5GfYEt83H8s7wLMBra8yf_7RSjuerw9tfbqGXZhjPbq7FDpb3FAv39OUxDZlewLvg-riCzVf1qPsixoXXTc4tTqz6Gk04B6384z2Q
+        roles:
+            - name: aether
+              bound_namespaces:
+                - aether
+              token_ttl: 3600
+              token_policies:
+                - pki_taskwarrior_aether
+                - default
+            - name: vault-backup
+              bound_namespaces:
+                - vault-backup
+              token_ttl: 600
+              token_policies:
+                - kv2_backup
+                - default
+            - name: cicd-ansible
+              bound_namespaces:
+                - cicd-ansible
+              token_ttl: 3600
+              token_policies:
+                - cicd_ansible
+                - ssh_clients_signer_user
+                - default
+            - name: acmevault
+              bound_namespaces:
+                - acmevault
+              token_ttl: 3600
+              token_policies:
+                - acmevault_server
+                - default
+            - name: certmanager
+              bound_namespaces:
+                - monitoring
+              token_ttl: 3600
+              token_policies:
+                - pki_general_certmanager
+                - default
+            - name: external-secrets
+              bound_namespaces:
+                - external-secrets
+              token_ttl: 3600
+              service_account_id: 5c4532f7-e72f-424e-86bf-ef71ae52bfd1
+              token_policies:
+                - k8s-kv2-dqs.dd.soeren.cloud
+                - default
+                - soeren_cloud
+              metadata:
+                environment: prod
+                cluster: svc.ez.soeren.cloud
+            - name: monitoring
+              bound_namespaces:
+                - monitoring
+              token_ttl: 43200
+              token_policies:
+                - prometheus
+                - default
+    svc.dd.soeren.cloud:
+        mount_path: svc.dd.soeren.cloud
+        host: https://192.168.65.27:6443
+        ca_cert_file: files/k8s-svc.dd.soeren.cloud.crt
+        token_reviewer_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6IjlRc0htQmdpclFPZWMzTzJqTmF4cy0xOG9rcjFQOGF0OHRpbTBNQXB1aEEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYWY1NjAxMTYtNTQzOC00NzE3LTk4NzgtNTg0M2ZiMzY5NGMyIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.gvHeRueI2bALWf9A0kfpfKyIMq_wBFu1seGiMNisKwSC7yganTmhjj8B8eNbDrA2hsuzVs9z_dBIItGDr2fX8lzUz5XtoYPb1BMrc7AmKy0HalqezjrhhtREI0Qa36kaxXhdFx1mjw72gy7NZV1qOjaWDuZkjPpTZq5H5iXyw0a_mhxV-AU_GILMImU_B2qFbyMQJt-yCgENtkzFZCK2OxtLyLtutkCCVU0khA46m-TyIbV6mWTIRAIXfElUi_qJtUf5LTseTjqNnXRQi3a60X-xOdK4IrnVSozGQJDWIsN1o994MRURfJHg1kxaoE9FbbCPwPgV7lbaNCpWaxZsOA
+        roles:
+            - name: aether
+              bound_namespaces:
+                - aether
+              token_ttl: 3600
+              token_policies:
+                - pki_taskwarrior_aether
+                - default
+            - name: certmanager
+              bound_namespaces:
+                - monitoring
+              token_ttl: 3600
+              token_policies:
+                - pki_general_certmanager
+                - default
+            - name: rabbitmq
+              bound_namespaces:
+                - rabbitmq
+              token_ttl: 3600
+              token_policies:
+                - pki_general_rabbitmq
+                - default
+            - name: external-secrets
+              bound_namespaces:
+                - external-secrets-system
+              token_ttl: 3600
+              service_account_id: 4114d307-075a-43a3-977a-56ebc3e3900e
+              token_policies:
+                - k8s-kv2-dqs.dd.soeren.cloud
+                - default
+                - soeren_cloud
+              metadata:
+                environment: prod
+                cluster: dqs.dd.soeren.cloud
+            - name: acmevault
+              bound_namespaces:
+                - acmevault
+              token_ttl: 3600
+              token_policies:
+                - acmevault_server
+                - default
+            - name: monitoring
+              bound_namespaces:
+                - monitoring
+              token_ttl: 43200
+              token_policies:
+                - prometheus
+                - default
+            - name: vault-backup
+              bound_namespaces:
+                - vault-backup
+              token_ttl: 600
+              token_policies:
+                - kv2_backup
+                - default
+    svc.pt.soeren.cloud:
+        mount_path: svc.pt.soeren.cloud
+        host: https://192.168.73.34:6443
+        ca_cert_file: files/k8s-svc.pt.soeren.cloud.crt
+        token_reviewer_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6InR4SkdqNGZ6ajBMYW81ODh0UUFpaDlta1M2VXY3T3F0ZXZrQmFNc1JlcWsifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNGUxNDU0YzQtOWQ4ZC00ODNlLTg4N2MtOWZhOWE2NmZjZWRjIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.i73VcPLRYHEbWm10rBx5eVGCS6b7FNlaKlT5cpK7OlQ_LhzESYm-SLkkD22dIkYnHe23V9hQ2OWlchUp9D3vlyCBWGR5Xdrpl_6H8O0JhPxvjvrOx0TRjUnbRk_npi-kMRGQbAK6yD7vHvanbYdh77eT1i5cWUOizjxQHViXzKHiqpwyKmTzO8GdlFMe_-YyOb9TMIxpydPulISZDrJQFdulscNocehagNbaLfXR1Wl4LgvsWBJP9HoUoniAlbQxoru7AAG6LSoVjTmMnrBQ4ysKbmEaBX86aya-qYAC6HgwxK4SMOuoGL7EHWpCaQx2gd8bXawNDR38c4SDLtQKQA
+        roles:
+            - name: acmevault
+              bound_namespaces:
+                - acmevault
+              token_ttl: 3600
+              token_policies:
+                - acmevault_server
+                - default
+            - name: certmanager
+              bound_namespaces:
+                - monitoring
+              token_ttl: 3600
+              token_policies:
+                - pki_general_certmanager
+                - default
+            - name: external-secrets
+              bound_namespaces:
+                - external-secrets
+              token_ttl: 3600
+              service_account_id: ff8abc70-6fdb-4e61-8309-56bda1ee6e50
+              token_policies:
+                - default
+                - soeren_cloud
+              metadata:
+                environment: prod
+                cluster: svc.pt.soeren.cloud
+            - name: monitoring
+              bound_namespaces:
+                - monitoring
+              token_ttl: 43200
+              token_policies:
+                - prometheus
+                - default
+secret_engines_k8s:
+    k8s.ez.soeren.cloud:
+        mount_path: kubernetes/k8s.ez.soeren.cloud
+        name: k8s.ez.soeren.cloud
+        host: https://k8s.ez.soeren.cloud:6443
+        ca_cert_file: files/k8s-svc.ez.soeren.cloud.crt
+        service_account_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6ImtuU05ScElINGlwVGxMZENVQTRYTDRfZExySTdCY3VjZUY0ak1HRjR0N1kifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtYXV0aC1zZWNyZXQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmF1bHQta3ViZXJuZXRlcy1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNWE2MzFkMzEtMzcwNC00MTM2LTkzOGItYWQ1NWFmZWE1YWMyIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQta3ViZXJuZXRlcy1hdXRoIn0.NMduqSBPFcr7--cXKdni3RAwvIv383BjJvtQEKgrYrn9XNlc5sY3AVJkiC_sKFVRMdTxsWtE-PtQfnRxmQSd_slKg0QgNX0VhyHTad_hsb2P4gsE10nYb4bZg-D0CAuXWfMn5hzEraULp12raIdkoZv_uyZKNVBt2T_VBXBjsBqavUSC55rSLazhV0qeBLjabWFltDgoCMq_e6Cpy0K_da6ZtppeRA_oXAeNfhQ4QMGbIGoRhRE7OXH2GRVG-OxL96elVs2Tx4uHw2OMdCrDTT-2O9zszT6PhnVhcFjpH8SfVBwizrDiz-opVWbPrO4aD47TKpXkMeiX6-1lXHM_0w
+        roles:
+            - name: developer
+              allowed_namespaces:
+                - '*'
+              token_ttl: 3600
+              kubernetes_role_name: voyeur
+              kubernetes_role_type: ClusterRole
+    k8s_pt:
+        mount_path: kubernetes/k8s.pt.soeren.cloud
+        name: svc-pt
+        host: https://192.168.73.34:6443
+        ca_cert_file: files/k8s-svc.pt.soeren.cloud.crt
+        service_account_jwt: eyJhbGciOiJSUzI1NiIsImtpZCI6InR4SkdqNGZ6ajBMYW81ODh0UUFpaDlta1M2VXY3T3F0ZXZrQmFNc1JlcWsifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ2YXVsdC1hdXRoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZhdWx0LWt1YmVybmV0ZXMtc2Utc2VjcmV0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6InZhdWx0LXNlIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiZjlkZGYxMzItNDAzNi00Mzc4LTg2YTYtNmFjMGViZDgyYjEzIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OnZhdWx0LWF1dGg6dmF1bHQtc2UifQ.HDZRh6BeUQq1amGiWO2vNE2BDnKWBeE0KbNHvB4DfHeBzB_pbaADo92dqQBmRGEDaoBvtBkENU5bnk0FMKYnrk1R5FoF4503hRBUC56X3_WN0Uib5bnINXwhrAEL0gtwddzyjBgRBTgVEzeKlaHGcF5m8KU2NFowTPYRkSTRPoLESzvi17lm5kHDCO555m_TJ_fU_KlwF8gbVm_vm3oPSb-m66dJ1_2kfWUzFKaiScrhlPHyWavKKzSOZR5b9Q96drmJVm5CQMB9rpo-uwGJA6Ht1no991aQ2F-u9OK9aj1yf3wnGI6SyYUmlyyIjvl6r1b8Hr-dGjHuXkPXhqaX-A
+        roles:
+            - name: acmevault
+              allowed_namespaces:
+                - '*'
+              token_ttl: 3600
+              kubernetes_role_name: voyeur
+              kubernetes_role_type: ClusterRole
+pki_allowed_token_domains:
+    - soeren-yubikey5.soeren.cloud
+cidr_list:
+    - 192.168.2.0/24
+    - 192.168.64.0/24
+    - 192.168.72.0/24
+approles: []
