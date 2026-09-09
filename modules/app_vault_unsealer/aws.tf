@@ -131,11 +131,13 @@ resource "aws_iam_policy" "decrypt" {
 # IAM user that can decrypt
 ###############################################################################
 
+
 resource "aws_iam_user" "decryptor" {
   count = local.aws_count
 
-  name = "${var.environment}-decryptor"
-  path = "/service/"
+  name                 = "${var.environment}-decryptor"
+  path                 = "/service/"
+  permissions_boundary = var.aws_permissions_boundary_arn
 
   tags = var.tags
 }

@@ -17,7 +17,10 @@ variable "kv_mount" {
 variable "tags" {
   description = "Tags applied to all taggable AWS resources. Ignored when enable_aws = false."
   type        = map(string)
-  default     = {}
+  default     = {
+    managed-by = "terraform"
+    repo = "github.com/soerenschneider/soeren.cloud/terraform/tf-vault"
+  }
 }
 
 variable "keys" {
@@ -51,6 +54,11 @@ variable "enable_aws" {
   default     = false
 }
 
+variable "aws_permissions_boundary_arn" {
+  description = "ARN of the IAM permissions boundary to apply to AWS IAM roles. Leave empty to disable the permissions boundary."
+  default = ""
+}
+
 variable "aws_region" {
   description = "AWS region for the KMS key. Only used when enable_aws = true."
   type        = string
@@ -60,7 +68,7 @@ variable "aws_region" {
 variable "aws_deletion_window_in_days" {
   description = "Waiting period before a scheduled KMS key deletion completes."
   type        = number
-  default     = 5
+  default     = 7
 }
 
 variable "aws_kv_secret_path" {

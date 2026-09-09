@@ -1,3 +1,3 @@
 locals {
-  instance = basename(abspath(path.module))
+  environment = basename(abspath(path.module))
 }

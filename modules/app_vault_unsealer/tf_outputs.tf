@@ -6,17 +6,17 @@ output "policies" {
   value = {
     encrypt = {
       for key, policy in vault_policy.transit_encrypt :
-      key => policy.name
+      key => policy
     }
 
     decrypt = {
       for key, policy in vault_policy.transit_decrypt :
-      key => policy.name
+      key => policy
     }
 
     encrypt_decrypt = {
       for key, policy in vault_policy.transit_encrypt_decrypt :
-      key => policy.name
+      key => policy
     }
   }
 }
@@ -28,8 +28,11 @@ output transit_mount {
   value = vault_mount.transit.path
 }
 
-output "transit_key_name" {
-  value = vault_transit_secret_backend_key.key.name
+output "transit_key_names" {
+  value = {
+    for key, val in vault_transit_secret_backend_key.key :
+    key => val.name
+  }
 }
 
 ###############################################################################

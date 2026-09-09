@@ -3,7 +3,7 @@ module "aws" {
 
   source         = "../../modules/se_aws"
   #mount_path     = each.value.path/
-  identifier     = "${local.instance}-${each.key}"
+  identifier     = "${local.environment}-${each.key}"
   roles          = each.value.roles
 }
 
